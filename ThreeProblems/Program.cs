@@ -30,14 +30,14 @@ choice = Convert.ToInt32(Console.ReadLine());
 if(choice == 1 || choice == 4)
 {
 
+
     bool validInput = false;
     char gradeLetter;
 
-    System.Console.WriteLine("\n=== Exercise 1: The Grade Checker ===");
-
+    System.Console.WriteLine("=== Exercise 1: The Grade Checker ===");
     while (!validInput)
     {
-        System.Console.Write("Give me a number grade: ");
+        System.Console.Write("Score: ");
         int gradeNum = Convert.ToInt32(Console.ReadLine());
         if (gradeNum >= 0 && gradeNum <= 100)
         {
@@ -83,28 +83,61 @@ if(choice == 2 || choice == 4)
     int rollAmount = 0;
     int wonAmount = 0;
 
-    System.Console.WriteLine("\n=== Exercise 2: The Dice Table ===");
+    System.Console.WriteLine("=== Exercise 2: The Dice Table ===");
+
+    while(rollAgain != 'n')
+    {
+    rollAmount++;
+    int diceRoll = rng.Next(1,7);
+    int anotherDiceRoll = rng.Next(1,7);
+    int totalDiceAmount = diceRoll + anotherDiceRoll;
+    
+    string outcome;
+    
+    if (diceRoll == 1 && anotherDiceRoll == 1)
+            {
+                outcome = "Snake eyes.";
+            }
+    else if(diceRoll == anotherDiceRoll)
+            {
+                outcome = "Doubles!";
+            }
+    else if(totalDiceAmount == 7 || totalDiceAmount == 11)
+            {
+                outcome = "A winner.";
+                wonAmount++;
+            }
+            else
+            {
+                outcome = "";
+            }
 
 
+    System.Console.WriteLine($"Roll {rollAmount}: {diceRoll} and {anotherDiceRoll}, total {totalDiceAmount}. {outcome}");
+    System.Console.WriteLine("Roll again? (y/n): ");
+    rollAgain = Console.ReadLine()[0];
+    }
+    System.Console.WriteLine($"You rolled {rollAmount} times and won {wonAmount}.");
 }
     
 if(choice == 3 || choice == 4)
 {
-    System.Console.WriteLine("\n=== Exercise 3: The Score Report ===");
+    
     
     int[] scoreValues = new int[5];
     int total = 0;
     int passingAmount = 0;
     
+    System.Console.WriteLine("=== Exercise 3: The Score Report ===");
+
     
 }
 
 if(choice < 1 || choice > 5)
-    {
-        System.Console.WriteLine("Choose a number from 1 to 5.");
-    }
+{
+    System.Console.WriteLine("Choose a number from 1 to 5.");
+}
 
 }
 while(choice != 5);
 Console.WriteLine("\nGoodbye.");
-
