@@ -30,12 +30,47 @@ choice = Convert.ToInt32(Console.ReadLine());
 if(choice == 1 || choice == 4)
 {
 
-
     bool validInput = false;
     char gradeLetter;
 
     System.Console.WriteLine("\n=== Exercise 1: The Grade Checker ===");
 
+    while (!validInput)
+    {
+        System.Console.Write("Give me a number grade: ");
+        int gradeNum = Convert.ToInt32(Console.ReadLine());
+        if (gradeNum >= 0 && gradeNum <= 100)
+        {
+            gradeNum = Convert.ToInt32(gradeNum);
+            validInput = true;
+            if(gradeNum >= 90)
+            {
+                gradeLetter = 'A';
+            }
+            else if(gradeNum >= 80)
+            {
+                gradeLetter = 'B';
+            }
+            else if(gradeNum >= 70)
+            {
+                gradeLetter = 'C';
+            }
+            else if(gradeNum >= 60)
+            {
+                gradeLetter = 'D';
+            }
+            else
+            {
+                gradeLetter = 'F';
+            }
+            System.Console.WriteLine($"{gradeNum} earns a {gradeLetter}.");
+        }
+        else
+        {
+            System.Console.WriteLine("A score must be between 0 and 100.");
+        }
+        
+    }
 }
 
 
@@ -50,18 +85,17 @@ if(choice == 2 || choice == 4)
 
     System.Console.WriteLine("\n=== Exercise 2: The Dice Table ===");
 
+
 }
     
 if(choice == 3 || choice == 4)
 {
-    
+    System.Console.WriteLine("\n=== Exercise 3: The Score Report ===");
     
     int[] scoreValues = new int[5];
     int total = 0;
     int passingAmount = 0;
     
-    System.Console.WriteLine("\n=== Exercise 3: The Score Report ===");
-
     
 }
 
