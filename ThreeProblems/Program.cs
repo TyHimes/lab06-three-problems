@@ -8,9 +8,14 @@
 * practices decisions and one of the four loops.
 */
 
+using System.ComponentModel;
 using System.Xml.Serialization;
 int choice;
 Random rng = new Random(4000);
+
+
+do
+{
 
 Console.WriteLine("\n=== CSCI 1250 Lab 06 ===");
 System.Console.WriteLine("1. The Grade Checker");
@@ -19,11 +24,17 @@ System.Console.WriteLine("3. The Score Report");
 System.Console.WriteLine("4. All three");
 System.Console.WriteLine("5. Quit");
 
-do
-{
-    
 System.Console.Write("Choose 1 through 5: ");
 choice = Convert.ToInt32(Console.ReadLine());
+
+    while (choice < 1 || choice > 5)
+    {
+        System.Console.WriteLine("Choose a number from 1 to 5.");
+        System.Console.Write("Choose 1 through 5: ");
+        choice = Convert.ToInt32(Console.ReadLine());
+
+    }
+
 
 
 
@@ -34,7 +45,7 @@ if(choice == 1 || choice == 4)
     bool validInput = false;
     char gradeLetter;
 
-    System.Console.WriteLine("=== Exercise 1: The Grade Checker ===");
+    System.Console.WriteLine("\n=== Exercise 1: The Grade Checker ===");
     while (!validInput)
     {
         System.Console.Write("Score: ");
@@ -83,7 +94,7 @@ if(choice == 2 || choice == 4)
     int rollAmount = 0;
     int wonAmount = 0;
 
-    System.Console.WriteLine("=== Exercise 2: The Dice Table ===");
+    System.Console.WriteLine("\n=== Exercise 2: The Dice Table ===");
 
     while(rollAgain != 'n')
     {
@@ -127,15 +138,32 @@ if(choice == 3 || choice == 4)
     int[] scoreValues = new int[5];
     int total = 0;
     int passingAmount = 0;
+    const int passingScoreMin = 60;
     
     System.Console.WriteLine("=== Exercise 3: The Score Report ===");
 
-    
-}
-
-if(choice < 1 || choice > 5)
-{
-    System.Console.WriteLine("Choose a number from 1 to 5.");
+    for(int i = 0; i < scoreValues.Length; i++)
+        {
+            System.Console.WriteLine($"Score {i + 1}: ");
+            scoreValues[i] = Convert.ToInt32(Console.ReadLine());
+        }
+    int max = scoreValues.Max();
+    foreach(int score in scoreValues)
+        {
+            total += score;
+            
+            if(score >= passingScoreMin)
+            {
+                passingAmount++;
+            }
+        }
+        double average = Convert.ToDouble(total)/scoreValues.Length;
+        
+System.Console.WriteLine($"Scores entered: {scoreValues.Length}");
+System.Console.WriteLine($"Total: {total}");
+System.Console.WriteLine($"Average: {average}");
+System.Console.WriteLine($"Highest: {max}");
+System.Console.WriteLine($"Passing: {passingAmount} of {scoreValues.Length}");
 }
 
 }
